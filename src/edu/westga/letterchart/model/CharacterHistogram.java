@@ -63,12 +63,18 @@ public class CharacterHistogram {
 	 */
 	public void load(File textFile) throws FileNotFoundException, IOException {
 		this.input = new Scanner(textFile);
+		if (!this.input.hasNext()) {
+			return;
+		}
 		do {
 			String value = this.input.next();
 			value = value.toUpperCase();
-			if (Character.isLetter(value.charAt(0))) {
-				this.increaseCountFor(value.charAt(0));
+			for (int i = 0; i < value.length(); i++) {
+				if (Character.isLetter(value.charAt(i))) {
+					this.increaseCountFor(value.charAt(i));
+				}
 			}
+
 		} while (this.input.hasNext());
 		this.input.close();
 	}

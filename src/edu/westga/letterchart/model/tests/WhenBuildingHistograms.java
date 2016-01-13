@@ -5,8 +5,14 @@ package edu.westga.letterchart.model.tests;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import edu.westga.letterchart.model.CharacterHistogram;
 
 /**
  * Test suite for testing methods in the CharacterHistogram class.
@@ -15,12 +21,14 @@ import org.junit.Test;
  * @version 2016.01.13
  */
 public class WhenBuildingHistograms {
+	CharacterHistogram histogram;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
+		this.histogram = new CharacterHistogram();
 	}
 
 	@Test
@@ -34,13 +42,15 @@ public class WhenBuildingHistograms {
 	}
 
 	@Test
-	public void singleLetterFileShouldHaveOneEntryWithCountOfOne() {
-		fail("Not yet implemented");
+	public void singleLetterFileShouldHaveOneEntryWithCountOfOne() throws FileNotFoundException, IOException {
+		this.histogram.load(new File("oneLetterFile.txt"));
+		assertEquals(1, this.histogram.getCountFor('H'));
 	}
 
 	@Test
-	public void fileWithOneRepeatingLetterShouldOnlyCountThatLetter() {
-		fail("Not yet implemented");
+	public void fileWithOneRepeatingLetterShouldOnlyCountThatLetter() throws FileNotFoundException, IOException {
+		this.histogram.load(new File("repeatingLetterFile.txt"));
+		assertEquals(45, this.histogram.getCountFor('F'));
 	}
 
 	@Test
