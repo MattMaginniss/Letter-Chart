@@ -15,7 +15,9 @@ import javafx.scene.chart.PieChart;
  * A CharacterHistogram is a histogram of letter values
  * read from a text file.
  * @author lewisb
+ * @editor Matt Maginniss
  *
+ * @version 2016.01.13
  */
 public class CharacterHistogram {
 	private Scanner input;
