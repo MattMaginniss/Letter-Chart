@@ -59,8 +59,10 @@ public class CharacterHistogram {
 		this.input = new Scanner(textFile);
 		do {
 			String value = this.input.next();
-			this.increaseCountFor(value.charAt(0));
-
+			value = value.toUpperCase();
+			if (Character.isLetter(value.charAt(0))) {
+				this.increaseCountFor(value.charAt(0));
+			}
 		} while (this.input.hasNext());
 		this.input.close();
 	}
