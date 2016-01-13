@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -52,7 +53,8 @@ public class CharacterHistogram {
 	 * @throws IllegalArgumentException if the file is null
 	 */
 	public void load(File textFile) throws FileNotFoundException, IOException {
-
+		String fileString = new Scanner(textFile).useDelimiter("\\A").next();
+		System.out.println(fileString);
 	}
 
 	/**
