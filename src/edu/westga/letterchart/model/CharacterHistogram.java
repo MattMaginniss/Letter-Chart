@@ -35,7 +35,7 @@ public class CharacterHistogram {
 	 * @return the number of times it appears in the histogram
 	 */
 	public int getCountFor(char character) {
-		return 0;
+		return this.hashMap.get(character);
 	}
 
 	/**
