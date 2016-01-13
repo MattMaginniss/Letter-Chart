@@ -19,13 +19,13 @@ import javafx.scene.chart.PieChart;
  */
 public class CharacterHistogram {
 	private Scanner input;
-	private Map hashMap;
+	private HashMap<Character, Integer> hashMap;
 
 	/**
 	 * Creates an empty CharacterHistogram.
 	 */
 	public CharacterHistogram() {
-		this.hashMap = new HashMap<String, Integer>();
+		this.hashMap = new HashMap<Character, Integer>();
 	}
 
 	/**
@@ -44,7 +44,11 @@ public class CharacterHistogram {
 	 * @param character the character for which we should increase the count
 	 */
 	private void increaseCountFor(char character) {
-
+		if (this.hashMap.containsKey(character)) {
+			this.hashMap.put(character, this.hashMap.get(character) + 1);
+		} else {
+			this.hashMap.put(character, 1);
+		}
 	}
 
 	/**
