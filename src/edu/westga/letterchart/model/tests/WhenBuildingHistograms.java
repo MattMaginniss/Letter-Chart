@@ -31,14 +31,15 @@ public class WhenBuildingHistograms {
 		this.histogram = new CharacterHistogram();
 	}
 
-	@Test
-	public void nullTextFileShouldThrowException() {
-		fail("Not yet implemented");
+	@Test(expected=IllegalArgumentException.class)
+	public void nullTextFileShouldThrowException() throws FileNotFoundException, IOException {
+		this.histogram.load(null);
 	}
 
 	@Test
-	public void emptyFileShouldHaveNoData() {
-		fail("Not yet implemented");
+	public void emptyFileShouldHaveNoData() throws FileNotFoundException, IOException {
+		this.histogram.load(new File("emptyTextFile.txt"));
+		assertTrue(this.histogram.dataProperty().isEmpty());
 	}
 
 	@Test
