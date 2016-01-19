@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 
@@ -62,6 +63,9 @@ public class CharacterHistogram {
 	 * @throws IllegalArgumentException if the file is null
 	 */
 	public void load(File textFile) throws FileNotFoundException, IOException {
+		if (textFile == null) {
+			throw new IllegalArgumentException("The input file cannot be null");
+		}
 		this.input = new Scanner(textFile);
 		if (!this.input.hasNext()) {
 			return;
@@ -74,7 +78,6 @@ public class CharacterHistogram {
 					this.increaseCountFor(value.charAt(i));
 				}
 			}
-
 		} while (this.input.hasNext());
 		this.input.close();
 	}
@@ -85,6 +88,11 @@ public class CharacterHistogram {
 	 * @return the histogram as pie char data
 	 */
 	public ObservableList<PieChart.Data> dataProperty() {
-		return null;
+		ObservableList<PieChart.Data> data = 
+				FXCollections.observableArrayList();
+		for (Map.Entry<Character, Integer> entry : this.hashMap.entrySet()) {
+			data.add(new PieChart.Data(entry.getKey().toString(), entry.getValue()));
+		}
+		return data;
 	}
 }
